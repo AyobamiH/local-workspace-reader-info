@@ -1,0 +1,35 @@
+name: Local Workspace Reader support
+about: Report a non-sensitive issue with the Local Workspace Reader plugin
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: 'Please do not share passwords, tokens, personal data, private filenames or confidential documents. These issues are public.'
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version
+      placeholder: e.g. 0.2.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Desktop operating system
+      placeholder: e.g. Windows 11 with WSL2
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: Describe the expected behaviour with synthetic examples only.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behaviour
+      description: Redact all sensitive paths and error logs before posting.
+    validations:
+      required: true
