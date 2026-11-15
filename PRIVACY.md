@@ -4,7 +4,7 @@ Effective: **15 November 2026**. Publisher: **AyobamiH**.
 
 ## What the plugin does
 
-Local Workspace Reader is installed and run on a computer chosen by the user. It provides three read-only MCP tools: a status check, a directory listing and a bounded excerpt from a text file inside a configured project folder. It uses the open-source Desktop Commander library as its local file-reading backend. It does not include shell or file-write tools in the reviewed interface.
+Local Workspace Reader is installed and run on a computer chosen by the user. It provides three read-only MCP tools: a status check, a directory listing and a bounded excerpt from a text file inside a configured project folder. Its three review-submitted tools use Node.js filesystem APIs and a local Model Context Protocol server. A separate full Desktop Commander server is a development option in the private engineering repository but is **not** started by this review-submitted plugin. It does not include shell or file-write tools in the reviewed interface.
 
 ## Data accessed and why
 

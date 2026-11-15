@@ -14,7 +14,7 @@ The initial plugin offers a local status report, directory listing and bounded t
 
 ## Software and attribution
 
-This independent project uses the open-source Desktop Commander package under its applicable licence. It is **not** an official Desktop Commander, OpenAI or ChatGPT product, and those organisations do not endorse this project. Third-party services are governed by their own terms and privacy policies.
+The review-submitted plugin independently implements three read-only filesystem tools using Node.js and an MCP protocol library; its engineering repository also tests against the MIT-licensed Desktop Commander project. The broader Desktop Commander server is not bundled into the directory submission. It is **not** an official Desktop Commander, OpenAI or ChatGPT product, and those organisations do not endorse this project. Third-party services are governed by their own terms and privacy policies.
 
 ## Availability and responsibility
 
