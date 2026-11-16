@@ -1,25 +1,25 @@
-# Local Workspace Reader — terms of service
+# Remote Desktop File Explorer — terms of service
 
-Effective: **15 November 2026**. Publisher: **AyobamiH**.
+Effective **16 November 2026**. Publisher: **AyobamiH**.
 
-Local Workspace Reader provides a local, **read-only** MCP interface for inspecting a project directory selected by the person operating the computer. It is intended for authorised development, documentation and file-review tasks, not remote administration, covert monitoring or unrestricted filesystem access.
+**Remote Desktop File Explorer** is a read-only AI plugin designed to browse and read selected project files from a computer that the user operates and authorises. Its authenticated HTTPS endpoint is `https://reader.proofandstate.com/mcp`. The initial release offers only connection status, directory listing and bounded text-file reading; it does **not** grant shell commands, filesystem modification, unattended desktop control or screen sharing.
 
-## Permission and responsibilities
+## Authorised use
 
-You must have permission to access any files you configure this plugin to read and comply with applicable laws, workplace policies and the terms of any AI service to which you connect it. Do not use it to obtain another person's credentials, private data or files without authority. Do not configure it to access secrets, regulated sensitive data or content you would not willingly send to the AI host you use.
+You must have the lawful right to access every file and folder you authorise this plugin to read, and you must comply with your workplace, AI service and operating-system policies. Do not configure the tool to access other people's data without permission, credentials, protected records or sensitive content you would not knowingly share with your AI provider. The owner must keep their local device credential secret and should select the minimum necessary folder.
 
-## What is provided
+## Account access and availability
 
-The initial plugin offers a local status report, directory listing and bounded text-file excerpts. It **does not** offer command execution, data modification or writing files through the reviewed tools. Access restrictions and supported features can change after testing and review; availability depends on the user device, host application and the applicable platform's permissions. No guarantee is made that all files are supported or that secret detection is exhaustive.
+The HTTPS service uses OAuth authorisation and a separate local device identity. The developer may disable sessions, revoke abusive or compromised authorisation, or change access controls to protect users and infrastructure. If your computer or the outbound local agent is offline, the plugin cannot retrieve actual files. A synthetic reviewer environment is not connected to any real user's computer.
 
-## Software and attribution
+## What the tool does not guarantee
 
-The review-submitted plugin independently implements three read-only filesystem tools using Node.js and an MCP protocol library; its engineering repository also tests against the MIT-licensed Desktop Commander project. The broader Desktop Commander server is not bundled into the directory submission. It is **not** an official Desktop Commander, OpenAI or ChatGPT product, and those organisations do not endorse this project. Third-party services are governed by their own terms and privacy policies.
+The service is provided **as is** to the extent permitted by applicable law. No filtering mechanism can guarantee that a file contains no private data; no remote network or cloud dependency has guaranteed availability. Verify outputs, retain your important data and avoid placing sensitive information in the authorised root. Nothing in these terms removes consumer rights or legal liabilities that cannot lawfully be excluded.
 
-## Availability and responsibility
+## Third-party technology
 
-The software is provided on an **as-is** basis to the extent permitted by law. Test it with non-sensitive files before relying on its output and retain original copies of important documents. Nothing here excludes rights or liabilities that cannot lawfully be excluded. The developer may update or withdraw the plugin where necessary for security, platform compatibility or other reasonable reasons.
+The project is independently developed and does not claim endorsement by OpenAI, Cloudflare or the Desktop Commander maintainers. The upstream Desktop Commander toolkit is maintained and tested separately and is **not** the remote read-only feature exposed in this plugin. Use of ChatGPT or other AI clients, Cloudflare or GitHub is subject to those providers' applicable terms and policies.
 
-## Contact
+## Support
 
-For support, questions or concerns, see the [support and issue-reporting page](SUPPORT.md). Do not share credentials, account tokens or sensitive file contents in public requests.
+See [support](SUPPORT.md) and the [privacy policy](PRIVACY.md). Do not send passwords or confidential files in public issue reports.
