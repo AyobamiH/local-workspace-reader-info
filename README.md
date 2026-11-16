@@ -11,3 +11,7 @@ This is an independent tool. It is not affiliated with OpenAI or the commercial 
 - [Support and issue reporting](SUPPORT.md)
 
 A user may decline or disconnect the plugin at any time. Do not expose secrets, private records or sensitive directories through the selected project folder.
+
+## Read-only integration video
+
+[See the local OAuth/MCP verification walkthrough](media/remote-desktop-file-explorer-review-demo-local-20261116.mp4). It demonstrates real local integration requests with synthetic reviewer data. **It is not a live ChatGPT production acceptance recording.** See [recording scope and limitations](media/README.md).
