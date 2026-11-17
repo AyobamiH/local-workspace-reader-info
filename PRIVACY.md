@@ -1,31 +1,33 @@
-# Remote Desktop File Explorer — privacy policy
+# Proof & State Desktop — privacy policy
 
-Effective **16 November 2026**. Independent developer: **AyobamiH**. Package identity: `personal-desktop-commander`. This policy concerns the URL-based, read-only **Remote Desktop File Explorer** plugin, not the separate Desktop Commander vendor service.
+Effective **17 November 2026**. Independent developer: **AyobamiH**. Package identity: `remote-desktop-file-explorer`, previously displayed as Remote Desktop File Explorer. This policy does not cover the separate commercial Desktop Commander service.
 
-## What this plugin does
+## Capabilities and information processed
 
-The plugin enables an AI client such as ChatGPT to browse ordinary files in one **explicitly authorised project folder on your own computer**. Its three tools report connectivity, list permitted folders and read bounded excerpts of permitted text files. It cannot run shell commands, edit or delete files, control the screen, access other drives arbitrarily or use the broader Desktop Commander toolkit.
+The owner connects explicitly enrolled workspaces to an authenticated MCP gateway. Operations may include file listings, bounded file contents and searches, proposed file edits, PDF generation, isolated Linux commands and durable jobs. Native Windows enrollment currently supports read-only operations. Screen control and general outbound networking are not provided.
 
-## Data processed
+Requests and responses can contain device identifiers, relative paths, filenames, file excerpts, proposed new content, command arguments, process/job identifiers, output, errors, approval request IDs and operation receipts. These may be sensitive even when a filename looks ordinary. Enrol only workspaces you intend to share with the AI client. Hidden, credential-like, parent and symlink paths are restricted; this is not a guarantee that ordinary files contain no private material.
 
-For a requested action, the service may process the authenticated client/user identity, OAuth scopes and client registration, relative file/folder paths, filenames and types, requested line counts, and the **contents of the excerpt** you explicitly ask the tool to return. A local device agent validates the requested tool and accesses only the configured root directory; it denies hidden paths, obvious credential-like filenames, symbolic links and traversal outside that root. These restrictions are protective controls, **not a guarantee that a normal-looking file contains no sensitive material**. Configure only a project folder you are comfortable sharing with the AI host.
+## Infrastructure and transmission
 
-## How the connection works and where content goes
+The HTTPS endpoint `https://reader.proofandstate.com/mcp` is hosted on Cloudflare Workers. OAuth client registrations, grants and token state are stored in the dedicated Cloudflare KV namespace. A Durable Object routes authenticated calls over an outbound WebSocket to the selected device agent. Requested content and results travel through Cloudflare to the AI client. Cloudflare therefore processes transient content; this is not a local-only connection.
 
-ChatGPT or the chosen client sends an authenticated HTTPS request to `https://reader.proofandstate.com/mcp`, hosted on **Cloudflare Workers** in the developer's Cloudflare account. OAuth registration, authorisation grants and token state are stored in the dedicated Cloudflare KV namespace used for this plugin. An owner request is forwarded over a protected Cloudflare Durable Object relay to the **outbound-only local device agent** running on the owner's computer. The agent reads the allowed file locally and sends the requested excerpt back through the Cloudflare relay to the AI client. **This makes Cloudflare an infrastructure processor of transient file content**, unlike a local-only stdio implementation. The developer does not intentionally persist the returned file text in a separate database or export it to analytics or advertisers.
+The developer does not intentionally export file contents to advertising or analytics services or sell user data. Operational events may be recorded in Cloudflare observability; the application is not designed to log credentials or file excerpts. Cloudflare and the AI provider have their own logs, retention rules and privacy settings.
 
-Review accounts are restricted to **synthetic demonstration fixtures**, never the owner's actual files. If the owner's computer is disconnected, real file requests fail rather than being fetched from any cloud copy.
+## Approvals and local records
 
-## Credentials, logs and retention
+Owner write and execution operations require the corresponding OAuth scopes and a device-local exact one-use approval. The agent keeps pending requests, consumed approvals, bounded results and job records on the owner machine to prevent replay and support recovery. These records can include proposed file content, commands and output. They are not automatically erased when a chat is deleted or an OAuth token is revoked. Local access is restricted to the owner account; the owner controls retention and removal. Removing recovery records may impair replay protection and must be handled deliberately.
 
-OAuth access and refresh credentials are used to authorise the MCP resource and may have the configured expiry periods (currently up to one hour for access tokens and 30 days for refresh tokens). The account's OAuth records are kept in Cloudflare KV for their functional lifetime, and can be revoked or removed in accordance with the underlying identity and platform controls. The device holds a private credential in its local protected storage; only a digest is configured as a Worker secret. The service records operational events and may expose limited request metadata in Cloudflare diagnostic/observability tooling; it is **not designed to log prompts or file excerpts**. Cloudflare and the AI client have their own operational logs and retention policies that the developer cannot unilaterally erase. The user-selected project files remain on the user's computer unless the user changes or deletes them.
+## Reviewer and browser demo
 
-AI clients such as ChatGPT process and retain submitted tool responses according to their own terms, plans and privacy settings. The developer does not sell user data or use it for targeted advertising through this plugin.
+Reviewer credentials are distinct from owner credentials. The full-capability review demo, when enabled, routes exclusively to a dedicated synthetic workspace. It uses the same execution code with separate device authentication, bounded resources and demo-only exact approvals. It cannot select owner devices or read their operation receipts. Demo filesystem changes, output and receipts are RAM-backed and reset on host reboot; they are not durable personal storage. Do not put personal information, credentials or confidential material in the shared review fixture.
 
-## Your control
+The browser demo uses OAuth with PKCE. Temporary login transaction information is stored in that browser tab's session storage until exchanged or restarted. The resulting access token is held in page memory, and disconnect requests revocation. Closing the page clears its memory but does not itself guarantee server-side revocation. Access tokens have a bounded lifetime.
 
-You choose the authorised folder, control whether the local agent runs, and can disconnect the MCP plugin and stop its device agent. If connected, tool calls may be sent to the AI service; verify the selected file and content before asking to read it. You may request assistance through the [support channel](SUPPORT.md), but **never post private data or credentials in a public GitHub issue**. Deleting a chat with an AI provider is governed by that provider's controls, not by the plugin developer.
+## Credentials and user control
 
-## Independent providers and changes
+Access tokens currently last up to one hour; refresh tokens may last up to 30 days. OAuth state remains in Cloudflare for its functional lifetime and can be revoked or removed through the applicable controls. Device credentials are stored in protected local files; their digests are configured on the Worker. Never share owner or reviewer codes in chat, public issues or recordings.
 
-This is an independently developed tool, not an official product of OpenAI or the upstream Desktop Commander vendor. Cloudflare hosts the HTTPS gateway and OAuth storage; GitHub hosts the public support documents; each provider has its own policies. The developer may update this notice when data flows or capabilities materially change. It does not cover any separate Desktop Commander service or other projects.
+The owner chooses enrolled devices and workspaces, approves effects, stops agents and disconnects the plugin. Revocation prevents future authorised access but does not undo completed writes or commands, delete local receipts or erase AI-provider copies. Cancellation can leave partial effects. Ask the AI provider about its copies and settings; contact the developer through [support](SUPPORT.md) for product assistance without posting private data.
+
+This is independent software, not an official OpenAI, Cloudflare or Desktop Commander product. GitHub hosts these public policy and support documents. Material changes to capabilities or data flows will be reflected in this notice.
