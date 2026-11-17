@@ -17,3 +17,9 @@ A user may decline or disconnect the plugin at any time. Do not expose secrets, 
 ## Historical read-only integration video
 
 [See the local OAuth/MCP verification walkthrough](media/remote-desktop-file-explorer-review-demo-local-20261116.mp4). It demonstrates real local integration requests with synthetic reviewer data. **It is not a live ChatGPT production acceptance recording.** See [recording scope and limitations](media/README.md).
+
+## Version 0.4 reviewer walkthrough
+
+[Watch the 39-second recorded browser walkthrough](media/proof-state-desktop-0.4-review-walkthrough.mp4). These are actual captured browser states from the passing isolated integration test, held for readability. It shows synthetic files, exact approval, real command execution, a completed durable job and disconnect. No real login credentials or personal files are recorded. This recording is not a ChatGPT conversation and is not proof of OpenAI publication.
+
+The matching live gateway and dedicated demo agent passed 51 production API checks on 17 November 2026 at 10:13 UTC. [Open the live reviewer demo](https://reader.proofandstate.com/demo); use the separately supplied reviewer code.
